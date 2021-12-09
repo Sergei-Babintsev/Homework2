@@ -1,48 +1,30 @@
 package com.sergei.myapplication
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-const val TAG = "MainActivity"
+
+private const val HELLO_KEY = "hello"
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var nextActivityButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(TAG,"Везувий зев открыл — дым хлынул клубом — пламя")
+        nextActivityButton = findViewById(R.id.next_activity_button)
+
+
+        nextActivityButton.setOnClickListener {
+            val link = Uri.parse("https://yandex.ru")
+            val openBrowserIntent = Intent(Intent.ACTION_VIEW, link)
+            val chooser=Intent.createChooser(openBrowserIntent,"Browser")
+            startActivity(chooser)
+        }
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG,"Широко развилось, как боевое знамя.")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG,"Земля волнуется — с шатнувшихся колонн")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG,"Кумиры падают! Народ, гонимый страхом,")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG,"Под каменным дождем, под воспаленным прахом,")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG,"Везувий зев открыл — дым хлынул клубом — пламя")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG,"Толпами, стар и млад, бежит из града вон.")
-    }
-
-
 }
