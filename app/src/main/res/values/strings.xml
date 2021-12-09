@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="random">random</string>
+    <string name="nightmare">nigytmare</string>
+    <string name="pushme">pushme</string>
+    <string name="push_me">push_me</string>
+</resources>
